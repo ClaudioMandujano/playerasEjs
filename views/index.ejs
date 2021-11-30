@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <%-include('./parcials/links.ejs')%>
+</head>
+<body>
+    <header>
+     <%-include('./parcials/nav.ejs') %>
+   
+     <div id="home" class="row align-items-center img-fluid hero">
+      <div class="col-6 col-lg-3 offset-lg-2">     
+      
+      </div>
+       <div class="col-6  texthero d-none d-md-block d-xl-block d-xxl-block">            
+        
+        <h1>¡FELIZ NAVIDAD!</h1>
+           <h4>Envúelvete en alegría y positividad estas fiestas</h4>
+      </div>
+  </div> 
+
+<!-- FIN NAVBAR -->
+<!--METODOS DE COMPRA -->      
+<div class="benefit">
+  <div class="container">
+    <div class="row benefit_row">
+      <div class="col-lg-3 benefit_col">
+        <div class="benefit_item d-flex flex-row align-items-center">
+          <div class="benefit_icon">
+            <i class="fas fa-store-alt" aria-hidden="true"></i>
+          </div>
+          <div class="benefit_content">
+            <h6>Ventas</h6>
+            <p>Solo en local</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 benefit_col">
+        <div class="benefit_item d-flex flex-row align-items-center">
+          <div class="benefit_icon">
+            <i class="fa fa-undo" aria-hidden="true"></i>
+          </div>
+          <div class="benefit_content">
+            <h6>45 Dias</h6>
+            <p>Devoluciones y Reembolsos</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 benefit_col">
+        <div class="benefit_item d-flex flex-row align-items-center">
+          <div class="benefit_icon">
+            <i class="fa fa-money" aria-hidden="true"></i>
+          </div>
+          <div class="benefit_content">
+            <h6>PAGO EN EFECTIVO </h6>
+            <p></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 benefit_col">
+        <div class="benefit_item d-flex flex-row align-items-center">
+          <div class="benefit_icon">
+            <i class="fa fa-clock-o" aria-hidden="true"></i>
+          </div>
+          <div class="benefit_content">
+            <h6>Horario</h6>
+            <p>8AM - 9PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FIN METODOS --->
+<!-- Banner -->
+<div class="banner">
+  <div class="container">
+    <div class="row">
+       <h2 class="text-uppercase mt-3 mb-3 text-center">¿A quién le quieres regalar?</h2>
+      <div class="col-md-4 mb-3">
+        <div class="banner_item align-iteam-center" style="background-image: url(images/banner_1.jpg);">
+          <div class="banner_categoria">
+            <p>Mujer</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div class="banner_item align-iteam-center img-fluid" style="background-image: url(images/infantil1.jpg);">
+          <div class="banner_categoria">
+            <p>Infantil</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="banner_item align-iteam-center" style="background-image: url(images/banner_3.jpg);">
+          <div class="banner_categoria">
+            <p>Hombre</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FIN DE SERVICIOS -->
+            <section class="gridpage-section bg-light" id="portfolio">
+              <div class="container">
+                <div class="text-center">
+                  <h2 class="section-heading text-uppercase mt-5">Novedades</h2>
+                  <h3 class="section-subheading text-muted">Lo ultimo en tendencia</h3>
+                </div>            
+            
+                <div class="row d-flex justify-content-evenly">
+                  <% products.forEach(product=> { %>
+                    <div class="col-xl-3 col-lg col-md col-sm  mt-5" style="max-width: 18rem;">
+                      <!-- GRID item -->
+                      <div class="card h-100 portfolio-item">
+                        <a class="portfolio-link" data-bs-toggle="modal" href="#staticBackdrop<%-product.id%>">
+                          <div class="portfolio-hover ">
+                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                          </div>
+                          <img src="<%-product.imagen%>" class="card-img-top" width="100">
+                        </a>
+                        <div class="card-body portfolio-caption">
+                          <div class="card-title portfolio-caption-heading">
+                            <%-product.name%>
+                          </div>
+                          <div class="card_text portfolio-caption-subheading text-muted mt-2">
+                            $<%-product.price%>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <% }) %>
+                </div>
+              </div>
+            </section>
+            
+            <% products.forEach(product=> { %>
+              <!-- Modal -->
+              <div class="modal fade portfolio-modal text-center" id="staticBackdrop<%-product.id%>" data-bs-backdrop="static"
+                data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <h1>
+                        <%-product.name%>
+                      </h1>
+                      <img src="<%-product.imagen%>">
+                      <h2>
+                        $<%-product.price%>
+                      </h2>
+                      <p>
+                        <%-product.description%>
+                      </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger w-100" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% }) %>
+
+
+
+         
+
+
+
+  <!-- TIMER DE DESCUENTO -->
+<section class="descuento d-none d-lg-block">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 p-0">
+        <div class="descuentofoto">
+          <img src="/images/deal_ofthe_week.png" class="img-fluid">
+        </div>
+      </div>
+      <div class="col-lg-6 p-0">
+        <div class="descuentotexto">
+          <div class="descuentotitulo">
+            <span>Descuento</span>
+            <h2>Verano 2021</h2>
+            <h5><span>Oferta</span> 60%</h5>
+          </div>
+          <div id="countdown" class="row timer">
+         </div>          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+       
+    
+    <%-include('./parcials/newsletter.ejs') %>
+    <%-include('./parcials/footer.ejs')%>
+</body>
+</html>
